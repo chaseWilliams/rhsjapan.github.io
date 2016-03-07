@@ -20,14 +20,14 @@ any unnecessary quotation marks when using this software- just straightaway
 tell me what to use. First, could you tell the author name to use?: "
 author = gets.chomp
 
-print "Excellent, #{author}. Now, what layout will this blog post be in? Hint:
+print "Now, what layout will this blog post be in? Hint:
 It's likely in 'post' format.: "
 layout = gets.chomp
 
-print "#{layout} layout it is! Now what shall I title this post?: "
+print "What shall I title this post?: "
 title = gets.chomp
 
-print "Finally, what category is this under?: ru"
+print "Finally, what category is this under?"
 category = gets.chomp
 
 puts "Awesome! Right now, you currently are saying that the layout is #{layout},
@@ -35,9 +35,9 @@ the title is \"#{title}\", the date will be #{Time.new.getlocal}, the author is
 #{author}, and the category is #{category}. If this is not correct, then please
 hit Control and C simultaneously, and then hit up arrow, and then enter to restart
 this program. Otherwise, type 'confirm' to create the file!"
-response = gatekeeper 'confirm'
+gatekeeper 'confirm'
 t = Time.new.getlocal
-Dir.chdir '../_posts'
+Dir.chdir File.expand_path '../README.md', __FILE__
 file = File.new "#{t.year}-#{t.month}-#{t.day}-#{title.gsub(' ', '-')}.markdown", 'w+'
 file.write "---
 layout: #{layout}
